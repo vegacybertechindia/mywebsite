@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Espirit Group — Authorized Dealer for Toyota, Audi & JSW MG</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --gold: #B8962E;
+      --gold-light: #D4AF5A;
+      --gold-pale: rgba(184,150,46,0.12);
+      --dark: #0A0A0A;
+      --dark-2: #111111;
+      --dark-3: #1A1A1A;
+      --dark-4: #222222;
+      --mid: #2E2E2E;
+      --light-grey: #F5F5F3;
+      --text-muted-custom: #888888;
+      --white: #FFFFFF;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Jost', sans-serif;
+      --transition: all 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--white);
+      color: var(--dark);
+      overflow-x: hidden;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--dark); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); }
+
+    /* ─── UTILITY ─── */
+    .serif { font-family: var(--serif); }
+    .gold { color: var(--gold); }
+    .gold-bg { background: var(--gold); }
+    .text-muted-custom { color: var(--text-muted-custom); }
+
+    .section-label {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--white);
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 0;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-gold::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.15);
+      transform: translateX(-100%);
+      transition: transform 0.4s ease;
+    }
+    .btn-gold:hover { background: #9A7D26; color: var(--white); }
+    .btn-gold:hover::after { transform: translateX(0); }
+
+    .btn-outline-gold {
+      background: transparent;
+      color: var(--white);
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.4);
+      padding: 14px 32px;
+      border-radius: 0;
+      transition: var(--transition);
+    }
+    .btn-outline-gold:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: transparent;
+    }
+
+    .btn-outline-dark {
+      background: transparent;
+      color: var(--dark);
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border: 1px solid rgba(0,0,0,0.25);
+      padding: 13px 30px;
+      border-radius: 0;
+      transition: var(--transition);
+    }
+    .btn-outline-dark:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: transparent;
+    }
+
+    .link-gold {
+      color: var(--gold);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: gap 0.3s ease, color 0.3s ease;
+    }
+    .link-gold:hover { color: #9A7D26; gap: 14px; }
+
+    /* ─── NAVBAR ─── */
+    .navbar-premium {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 20px 0;
+      transition: var(--transition);
+    }
+    .navbar-premium.scrolled {
+      background: rgba(10,10,10,0.96);
+      backdrop-filter: blur(20px);
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(184,150,46,0.2);
+    }
+    .navbar-brand-premium {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--white) !important;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+    }
+    .navbar-brand-premium span { color: var(--gold); }
+    .nav-link-premium {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75) !important;
+      padding: 6px 14px !important;
+      transition: color 0.3s ease;
+      text-decoration: none;
+    }
+    .nav-link-premium:hover, .nav-link-premium.active { color: var(--gold) !important; }
+    .nav-cta {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold) !important;
+      border: 1px solid rgba(184,150,46,0.5);
+      padding: 8px 20px !important;
+      transition: var(--transition);
+    }
+    .nav-cta:hover { background: var(--gold); color: var(--white) !important; }
+
+    /* ─── HERO ─── */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          to right,
+          rgba(5,5,5,0.88) 0%,
+          rgba(5,5,5,0.55) 55%,
+          rgba(5,5,5,0.25) 100%
+        ),
+        url('https://images.unsplash.com/photo-1617469767053-d3b523a0b982?w=1800&q=80') center/cover no-repeat;
+      transform: scale(1.04);
+      animation: heroZoom 12s ease-out forwards;
+    }
+    @keyframes heroZoom {
+      from { transform: scale(1.04); }
+      to   { transform: scale(1.00); }
+    }
+    .hero-noise {
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.4;
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 2; animation: heroFadeIn 1.2s 0.3s both; }
+    @keyframes heroFadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+    }
+    .hero-badge::before {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .hero-h1 {
+      font-family: var(--serif);
+      font-size: clamp(3.2rem, 7vw, 6rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 28px;
+      letter-spacing: -0.01em;
+    }
+    .hero-h1 em { font-style: italic; color: var(--gold); }
+    .hero-sub {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.6);
+      font-weight: 300;
+      max-width: 420px;
+      margin-bottom: 44px;
+      line-height: 1.8;
+    }
+    .hero-brands {
+      position: absolute;
+      bottom: 44px;
+      right: 0;
+      display: flex;
+      gap: 1px;
+      overflow: hidden;
+      z-index: 2;
+    }
+    .hero-brand-pill {
+      background: rgba(255,255,255,0.06);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 10px 22px;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    .hero-brand-pill:hover { background: rgba(184,150,46,0.15); border-color: rgba(184,150,46,0.4); color: var(--gold); }
+    .hero-scroll {
+      position: absolute;
+      bottom: 44px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      z-index: 2;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .hero-scroll-line {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50%       { opacity: 1;   transform: scaleY(0.7); }
+    }
+
+    /* ─── ABOUT ─── */
+    #about { padding: 110px 0; background: var(--white); }
+    .about-quote {
+      font-family: var(--serif);
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.55;
+      color: var(--dark);
+      border-left: 3px solid var(--gold);
+      padding-left: 32px;
+    }
+    .about-stat {
+      border-top: 1px solid #E8E8E8;
+      padding-top: 24px;
+      margin-top: 24px;
+    }
+    .about-stat-num {
+      font-family: var(--serif);
+      font-size: 2.8rem;
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .about-stat-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted-custom);
+      margin-top: 4px;
+    }
+    .feature-icon-wrap {
+      width: 44px; height: 44px;
+      border: 1px solid rgba(184,150,46,0.3);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      color: var(--gold);
+      font-size: 1rem;
+    }
+
+    /* ─── DIVIDER ─── */
+    .gold-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      margin: 0;
+    }
+
+    /* ─── BRANDS COLLECTION ─── */
+    #collection { padding: 110px 0; background: var(--light-grey); }
+    .collection-header { margin-bottom: 70px; }
+    .brand-card {
+      position: relative;
+      overflow: hidden;
+      background: var(--dark);
+      cursor: pointer;
+    }
+    .brand-card-img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.5s ease;
+      filter: brightness(0.7) saturate(0.9);
+    }
+    .brand-card:hover .brand-card-img {
+      transform: scale(1.06);
+      filter: brightness(0.5) saturate(0.8);
+    }
+    .brand-card-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 36px;
+      background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);
+      transition: var(--transition);
+    }
+    .brand-card-logo-wrap {
+      width: 54px; height: 54px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
+      font-family: var(--serif);
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.1em;
+    }
+    .brand-card-title {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .brand-card-desc {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.65);
+      font-weight: 300;
+      margin-bottom: 20px;
+      max-width: 320px;
+    }
+    .brand-card-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .brand-tag {
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 4px 12px;
+    }
+
+    /* ─── STATS (DARK) ─── */
+    #stats {
+      position: relative;
+      padding: 0;
+      overflow: hidden;
+    }
+    .stats-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(10,10,10,0.88), rgba(10,10,10,0.88)),
+        url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1800&q=80') center/cover no-repeat;
+    }
+    .stats-inner {
+      position: relative;
+      z-index: 2;
+      padding: 110px 0;
+    }
+    .stats-headline {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.2;
+    }
+    .stats-headline strong { font-weight: 700; font-style: normal; color: var(--gold); }
+    .stat-block { text-align: center; }
+    .stat-number {
+      font-family: var(--serif);
+      font-size: clamp(3.5rem, 6vw, 5.5rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .stat-number sup {
+      font-size: 0.4em;
+      vertical-align: top;
+      margin-top: 0.3em;
+      color: var(--gold);
+    }
+    .stat-number span { color: var(--gold); }
+    .stat-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-top: 8px;
+    }
+    .stat-divider {
+      width: 1px;
+      height: 60px;
+      background: rgba(255,255,255,0.12);
+      margin: 0 auto;
+    }
+
+    /* ─── SERVICES ─── */
+    #services { padding: 110px 0; background: var(--white); }
+    .service-feature-img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      filter: brightness(0.85);
+    }
+    .service-card {
+      border-left: 1px solid #E8E8E8;
+      padding-left: 24px;
+      margin-bottom: 28px;
+      transition: border-color 0.3s ease;
+    }
+    .service-card:hover { border-left-color: var(--gold); }
+    .service-card-icon {
+      color: var(--gold);
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+    .service-card-title {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .service-card-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted-custom);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* ─── TESTIMONIAL ─── */
+    #testimonial {
+      padding: 110px 0;
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+    .testimonial-bg-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--serif);
+      font-size: 20vw;
+      font-weight: 700;
+      color: rgba(255,255,255,0.02);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+    }
+    .testimonial-text {
+      font-family: var(--serif);
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.55;
+      position: relative;
+      z-index: 2;
+    }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 36px;
+      position: relative;
+      z-index: 2;
+    }
+    .testimonial-author-img {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--gold);
+    }
+    .testimonial-author-name {
+      font-family: var(--sans);
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--white);
+    }
+    .testimonial-author-role {
+      font-size: 0.7rem;
+      color: var(--text-muted-custom);
+      letter-spacing: 0.1em;
+    }
+    .testimonial-stars { color: var(--gold); font-size: 0.8rem; }
+
+    /* ─── CTA BANNER ─── */
+    #cta {
+      padding: 100px 0;
+      background: var(--light-grey);
+      text-align: center;
+    }
+    .cta-headline {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .cta-headline em { font-style: italic; color: var(--gold); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--dark-2);
+      padding: 80px 0 0;
+      border-top: 1px solid rgba(184,150,46,0.2);
+    }
+    .footer-brand {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.05em;
+    }
+    .footer-brand span { color: var(--gold); }
+    .footer-tagline {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+      margin-top: 8px;
+      letter-spacing: 0.1em;
+    }
+    .footer-heading {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+    .footer-link {
+      display: block;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 300;
+      margin-bottom: 10px;
+      transition: color 0.3s ease;
+    }
+    .footer-link:hover { color: var(--gold); }
+    .footer-address {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.45);
+      font-weight: 300;
+      line-height: 1.9;
+    }
+    .footer-address strong { color: rgba(255,255,255,0.7); font-weight: 400; }
+    .footer-contact-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+    }
+    .footer-contact-row i { color: var(--gold); font-size: 0.85rem; }
+    .footer-dealer-badge {
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 14px 20px;
+      text-align: center;
+      flex: 1;
+      transition: var(--transition);
+    }
+    .footer-dealer-badge:hover { border-color: var(--gold); }
+    .footer-dealer-badge-name {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+    .footer-dealer-badge-sub {
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted-custom);
+      margin-top: 3px;
+    }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 22px 0;
+      margin-top: 60px;
+    }
+    .footer-bottom p {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.25);
+      margin: 0;
+    }
+    .social-icon {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(255,255,255,0.12);
+      display: inline-flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: var(--transition);
+    }
+    .social-icon:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ─── ANIMATIONS ─── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-up.delay-1 { transition-delay: 0.15s; }
+    .fade-up.delay-2 { transition-delay: 0.3s; }
+    .fade-up.delay-3 { transition-delay: 0.45s; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .hero-brands { display: none; }
+      .hero-h1 { font-size: 2.8rem; }
+      .brand-card-img { height: 320px; }
+      .service-feature-img { height: 300px; }
+      .stat-divider { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════════════ -->
+<nav class="navbar-premium" id="mainNav">
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="#" class="navbar-brand-premium">Espirit<span>.</span></a>
+
+      <!-- Desktop Nav -->
+      <div class="d-none d-lg-flex align-items-center gap-1">
+        <a href="#about"      class="nav-link-premium">About</a>
+        <a href="#collection" class="nav-link-premium">New Car</a>
+        <a href="#services"   class="nav-link-premium">Used Car</a>
+        <a href="#services"   class="nav-link-premium">Service</a>
+        <a href="#"           class="nav-link-premium">Insurance</a>
+        <a href="#"           class="nav-link-premium">Career</a>
+        <a href="#cta"        class="nav-link-premium nav-cta ms-3">Contact Us</a>
+      </div>
+
+      <!-- Mobile Hamburger -->
+      <button class="d-lg-none btn border-0 p-0" id="mobileMenuToggle"
+        style="color: var(--white); font-size: 1.4rem;">
+        <i class="bi bi-list"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="d-none d-lg-none pt-3 pb-2"
+      style="border-top: 1px solid rgba(255,255,255,0.1); margin-top: 16px;">
+      <a href="#about"      class="nav-link-premium d-block py-2">About</a>
+      <a href="#collection" class="nav-link-premium d-block py-2">New Car</a>
+      <a href="#services"   class="nav-link-premium d-block py-2">Service</a>
+      <a href="#cta"        class="nav-link-premium d-block py-2">Contact Us</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-noise"></div>
+
+  <div class="container hero-content">
+    <div class="row">
+      <div class="col-lg-8 col-xl-7">
+        <div class="hero-badge">Authorized Dealer Group for Toyota, Audi &amp; JSW MG</div>
+        <h1 class="hero-h1">
+          Driving Trust<br>
+          &amp; <em>Innovation</em><br>
+          Since 2002
+        </h1>
+        <p class="hero-sub">
+          Your premier destination for world-class automobiles. We don't just
+          sell vehicles — we curate journeys, backed by two decades of trust.
+        </p>
+        <div class="d-flex gap-3 flex-wrap">
+          <a href="#collection" class="btn-gold">Explore Collection</a>
+          <a href="#cta"        class="btn-outline-gold">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Brand Pills -->
+  <div class="hero-brands">
+    <div class="hero-brand-pill">Toyota</div>
+    <div class="hero-brand-pill">Audi</div>
+    <div class="hero-brand-pill">JSW MG</div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     ABOUT
+═══════════════════════════════════════════════ -->
+<section id="about">
+  <div class="container">
+    <div class="row gy-5 align-items-center">
+
+      <div class="col-lg-4 fade-up">
+        <div class="section-label mb-4">Our Philosophy</div>
+        <h2 class="serif" style="font-size: clamp(2rem,3.5vw,3rem); font-weight: 600; line-height:1.15; margin-bottom: 20px;">
+          The Art of<br>Automotive<br><em style="color:var(--gold)">Excellence.</em>
+        </h2>
+        <p class="text-muted-custom" style="font-size:0.88rem; font-weight:300;">
+          Since 2002, Espirit Group has redefined the dealership experience —
+          merging trust, precision, and passion into every transaction.
+        </p>
+
+        <div class="row g-3 mt-2">
+          <div class="col-6 about-stat">
+            <div class="about-stat-num">24+</div>
+            <div class="about-stat-label">Years of Excellence</div>
+          </div>
+          <div class="col-6 about-stat">
+            <div class="about-stat-num">50K</div>
+            <div class="about-stat-label">Happy Customers</div>
+          </div>
+          <div class="col-6 about-stat">
+            <div class="about-stat-num">3</div>
+            <div class="about-stat-label">Premium Brands</div>
+          </div>
+          <div class="col-6 about-stat">
+            <div class="about-stat-num">100%</div>
+            <div class="about-stat-label">Sustainable Vision</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-1 d-none d-lg-block"></div>
+
+      <div class="col-lg-7 fade-up delay-1">
+        <blockquote class="about-quote mb-48">
+          "We don't just sell vehicles; we curate journeys. As the authorized partner
+          for Toyota, Audi, and JSW MG, we bring the world's finest engineering
+          to your doorstep."
+        </blockquote>
+
+        <div style="height:48px;"></div>
+
+        <div class="row g-4 mt-2">
+          <div class="col-md-6">
+            <div class="d-flex gap-3 align-items-start">
+              <div class="feature-icon-wrap"><i class="bi bi-shield-check"></i></div>
+              <div>
+                <div class="serif fw-semibold mb-1" style="font-size:1.1rem;">Unwavering Trust</div>
+                <p class="text-muted-custom mb-0" style="font-size:0.82rem; font-weight:300;">
+                  Every vehicle passes rigorous quality checks. Our legacy is built on
+                  more than two decades of customer satisfaction.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="d-flex gap-3 align-items-start">
+              <div class="feature-icon-wrap"><i class="bi bi-leaf"></i></div>
+              <div>
+                <div class="serif fw-semibold mb-1" style="font-size:1.1rem;">Sustainable Future</div>
+                <p class="text-muted-custom mb-0" style="font-size:0.82rem; font-weight:300;">
+                  We champion eco-conscious mobility — offering hybrid and electric
+                  options that perform as beautifully as they preserve.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- ═══════════════════════════════════════════════
+     BRAND COLLECTION
+═══════════════════════════════════════════════ -->
+<section id="collection">
+  <div class="container">
+    <div class="row collection-header align-items-end">
+      <div class="col-lg-5 fade-up">
+        <div class="section-label mb-4">Our Curated Collection</div>
+        <h2 class="serif" style="font-size:clamp(2rem,3.5vw,3rem); font-weight:600; line-height:1.15;">
+          Three Distinct<br>Identities. <em style="color:var(--gold);">One Standard<br>of Excellence.</em>
+        </h2>
+      </div>
+      <div class="col-lg-5 offset-lg-2 fade-up delay-1">
+        <p class="text-muted-custom" style="font-size:0.88rem; font-weight:300;">
+          Choose your path. Each brand represents a unique philosophy of driving —
+          from everyday reliability to engineered luxury to electric revolution.
+        </p>
+      </div>
+    </div>
+
+    <!-- Toyota -->
+    <div class="row mb-5 fade-up">
+      <div class="col-12">
+        <div class="brand-card">
+          <img
+            src="https://images.unsplash.com/photo-1621993202925-25a6c9a9d8a6?w=1400&q=80"
+            alt="Toyota"
+            class="brand-card-img"
+            style="height: 520px;"
+          />
+          <div class="brand-card-overlay">
+            <div class="brand-card-logo-wrap">T</div>
+            <div class="brand-card-title">Toyota</div>
+            <p class="brand-card-desc">
+              Quality, Durability, and Reliability. Experience the joy of moving
+              forward with world-class Japanese engineering.
+            </p>
+            <div class="brand-card-tags">
+              <span class="brand-tag">Innova HyCross</span>
+              <span class="brand-tag">Fortuner</span>
+              <span class="brand-tag">Camry Hybrid</span>
+              <span class="brand-tag">Urban Cruiser</span>
+            </div>
+            <a href="#" class="link-gold">Explore Toyota <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Audi -->
+    <div class="row mb-5 fade-up delay-1">
+      <div class="col-12">
+        <div class="brand-card">
+          <img
+            src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=1400&q=80"
+            alt="Audi"
+            class="brand-card-img"
+            style="height: 520px;"
+          />
+          <div class="brand-card-overlay">
+            <div class="brand-card-logo-wrap" style="font-style: italic;">A</div>
+            <div class="brand-card-title">Audi</div>
+            <p class="brand-card-desc">
+              Progress through technology. Defining the future of premium mobility
+              with sophisticated German design and unrivalled performance.
+            </p>
+            <div class="brand-card-tags">
+              <span class="brand-tag">A4</span>
+              <span class="brand-tag">Q5</span>
+              <span class="brand-tag">Q8</span>
+              <span class="brand-tag">e-tron</span>
+            </div>
+            <a href="#" class="link-gold">Explore Audi <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JSW MG -->
+    <div class="row fade-up delay-2">
+      <div class="col-12">
+        <div class="brand-card">
+          <img
+            src="https://images.unsplash.com/photo-1593941707882-a5bba14938c7?w=1400&q=80"
+            alt="JSW MG"
+            class="brand-card-img"
+            style="height: 520px;"
+          />
+          <div class="brand-card-overlay">
+            <div class="brand-card-logo-wrap">MG</div>
+            <div class="brand-card-title">JSW MG</div>
+            <p class="brand-card-desc">
+              A century of racing DNA meets the future of electric mobility.
+              Innovation, performance, and connected technology reimagined.
+            </p>
+            <div class="brand-card-tags">
+              <span class="brand-tag">Comet EV</span>
+              <span class="brand-tag">Windsor EV</span>
+              <span class="brand-tag">Hector Plus</span>
+              <span class="brand-tag">Gloster</span>
+            </div>
+            <a href="#" class="link-gold">Explore JSW MG <i class="bi bi-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     STATS
+═══════════════════════════════════════════════ -->
+<section id="stats">
+  <div class="stats-bg"></div>
+  <div class="stats-inner">
+    <div class="container">
+
+      <div class="text-center mb-5 fade-up">
+        <div class="section-label justify-content-center mb-4"
+          style="color:rgba(255,255,255,0.4);">
+          <span style="background:rgba(255,255,255,0.4);"></span>
+          Numbers That Define Us
+        </div>
+        <h2 class="stats-headline">
+          Experience the<br>
+          <strong>Extraordinary</strong>
+        </h2>
+      </div>
+
+      <div class="row gy-5 justify-content-center text-center fade-up delay-1">
+        <div class="col-6 col-md-3">
+          <div class="stat-block">
+            <div class="stat-number">24<span>+</span></div>
+            <div class="stat-label">Years of Excellence</div>
+          </div>
+        </div>
+        <div class="col-md-1 d-none d-md-flex align-items-center justify-content-center">
+          <div class="stat-divider"></div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-block">
+            <div class="stat-number">50<span>K</span></div>
+            <div class="stat-label">Happy Customers</div>
+          </div>
+        </div>
+        <div class="col-md-1 d-none d-md-flex align-items-center justify-content-center">
+          <div class="stat-divider"></div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="stat-block">
+            <div class="stat-number">100<sup>%</sup></div>
+            <div class="stat-label">Sustainable Vision</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     SERVICES
+═══════════════════════════════════════════════ -->
+<section id="services">
+  <div class="container">
+    <div class="row gy-5 align-items-center">
+
+      <div class="col-lg-5 fade-up">
+        <img
+          src="https://images.unsplash.com/photo-1493238792000-8113da705763?w=900&q=80"
+          alt="Service Centre"
+          class="service-feature-img"
+        />
+      </div>
+
+      <div class="col-lg-6 offset-lg-1 fade-up delay-1">
+        <div class="section-label mb-4" style="color:var(--gold);">Aftersales</div>
+        <h2 class="serif mb-4" style="font-size:clamp(2rem,3.5vw,3rem); font-weight:600; line-height:1.15;">
+          Expert Care for<br>Your <em style="color:var(--gold);">Premium</em> Vehicle
+        </h2>
+        <p class="text-muted-custom mb-5" style="font-size:0.88rem; font-weight:300;">
+          Our state-of-the-art service centres are staffed by certified technicians
+          who understand every nuance of your Toyota, Audi, or MG. We use only
+          genuine parts to ensure your vehicle performs at its peak.
+        </p>
+
+        <div class="service-card">
+          <div class="service-card-icon"><i class="bi bi-tools"></i></div>
+          <div class="service-card-title">Periodic Maintenance &amp; Diagnostics</div>
+          <p class="service-card-desc">Comprehensive multi-point inspections, software updates, and scheduled servicing tailored to your vehicle's requirements.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card-icon"><i class="bi bi-box-seam"></i></div>
+          <div class="service-card-title">Genuine Parts &amp; Accessories</div>
+          <p class="service-card-desc">Factory-authorized components sourced directly from Toyota, Audi, and JSW MG — ensuring integrity and longevity.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card-icon"><i class="bi bi-geo-alt"></i></div>
+          <div class="service-card-title">24/7 Roadside Assistance</div>
+          <p class="service-card-desc">Round-the-clock support wherever the road takes you. Our rapid-response teams are always on standby.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-card-icon"><i class="bi bi-file-earmark-check"></i></div>
+          <div class="service-card-title">Insurance &amp; Claims Support</div>
+          <p class="service-card-desc">Seamless end-to-end claims assistance with all major insurance providers — minimal paperwork, maximum peace of mind.</p>
+        </div>
+
+        <div class="mt-4">
+          <a href="#cta" class="link-gold" style="font-size:0.78rem;">
+            Schedule Service Appointment <i class="bi bi-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- ═══════════════════════════════════════════════
+     TESTIMONIAL
+═══════════════════════════════════════════════ -->
+<section id="testimonial">
+  <div class="testimonial-bg-text">ESPIRIT</div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center fade-up">
+        <div class="testimonial-stars mb-4">
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+        </div>
+        <p class="testimonial-text">
+          "Buying my Audi Q8 at Espirit was unlike any dealership experience I've had.
+          The team understood exactly what I needed. Three years on, the after-sales
+          service remains impeccable."
+        </p>
+        <div class="testimonial-author justify-content-center">
+          <img
+            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80"
+            alt="Customer"
+            class="testimonial-author-img"
+          />
+          <div class="text-start">
+            <div class="testimonial-author-name">Rajiv Mehta</div>
+            <div class="testimonial-author-role">Audi Q8 — Delhi NCR</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     CTA BANNER
+═══════════════════════════════════════════════ -->
+<section id="cta">
+  <div class="container">
+    <div class="row justify-content-center text-center">
+      <div class="col-lg-7 fade-up">
+        <div class="section-label justify-content-center mb-4">Get Started</div>
+        <h2 class="cta-headline">
+          Ready to Start<br>Your <em>Journey?</em>
+        </h2>
+        <p class="text-muted-custom mb-5" style="font-size:0.88rem; max-width:460px; margin-inline:auto;">
+          Visit our showrooms, book a test drive, or speak to a specialist.
+          We're ready to help you discover the perfect vehicle for your lifestyle.
+        </p>
+        <div class="d-flex gap-3 justify-content-center flex-wrap">
+          <a href="#" class="btn-gold">Book a Test Drive</a>
+          <a href="#" class="btn-outline-dark">Find a Showroom</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="row gy-5 pb-5">
+
+      <!-- Brand Column -->
+      <div class="col-lg-4">
+        <div class="footer-brand">Espirit<span>.</span></div>
+        <div class="footer-tagline">Authorized Dealer — Toyota · Audi · JSW MG</div>
+        <p class="mt-4" style="font-size:0.82rem; color:rgba(255,255,255,0.4); font-weight:300; line-height:1.9; max-width:280px;">
+          Driving trust and innovation since 2002. Setting the benchmark for premium automotive retail in India.
+        </p>
+        <div class="d-flex gap-2 mt-4">
+          <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+          <a href="#" class="social-icon"><i class="bi bi-youtube"></i></a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="col-6 col-md-3 col-lg-2 offset-lg-1">
+        <div class="footer-heading">Quick Links</div>
+        <a href="#"  class="footer-link">About Us</a>
+        <a href="#"  class="footer-link">New Cars</a>
+        <a href="#"  class="footer-link">Used Cars</a>
+        <a href="#"  class="footer-link">Service</a>
+        <a href="#"  class="footer-link">Insurance</a>
+        <a href="#"  class="footer-link">Career</a>
+      </div>
+
+      <!-- More -->
+      <div class="col-6 col-md-3 col-lg-2">
+        <div class="footer-heading">More</div>
+        <a href="#" class="footer-link">Finance &amp; EMI</a>
+        <a href="#" class="footer-link">Exchange</a>
+        <a href="#" class="footer-link">Accessories</a>
+        <a href="#" class="footer-link">Annual AMC</a>
+        <a href="#" class="footer-link">Contact Us</a>
+      </div>
+
+      <!-- Contact -->
+      <div class="col-md-6 col-lg-3">
+        <div class="footer-heading">Corporate Office</div>
+        <div class="footer-contact-row"><i class="bi bi-geo-alt-fill"></i><span>Espirit Tower, Connaught Place<br>New Delhi — 110001</span></div>
+        <div class="footer-contact-row"><i class="bi bi-telephone-fill"></i><span>+91 11 4000 9000</span></div>
+        <div class="footer-contact-row"><i class="bi bi-envelope-fill"></i><span>hello@espirit-group.in</span></div>
+      </div>
+    </div>
+
+    <!-- Dealer Badges -->
+    <div class="row pb-5">
+      <div class="col-12">
+        <div class="footer-heading mb-4">Our Brand Dealerships</div>
+        <div class="d-flex gap-2 flex-wrap">
+          <div class="footer-dealer-badge">
+            <div class="footer-dealer-badge-name">Toyota</div>
+            <div class="footer-dealer-badge-sub">Authorized Dealer</div>
+          </div>
+          <div class="footer-dealer-badge">
+            <div class="footer-dealer-badge-name">Audi</div>
+            <div class="footer-dealer-badge-sub">Authorized Dealer</div>
+          </div>
+          <div class="footer-dealer-badge">
+            <div class="footer-dealer-badge-name">JSW MG</div>
+            <div class="footer-dealer-badge-sub">Authorized Dealer</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <p>© 2024 Espirit Group. All rights reserved. Authorized Dealer for Toyota, Audi &amp; JSW MG.</p>
+        </div>
+        <div class="col-md-6 text-md-end mt-2 mt-md-0">
+          <p>
+            <a href="#" style="color:rgba(255,255,255,0.25);text-decoration:none;font-size:0.72rem;margin-right:16px;">Privacy Policy</a>
+            <a href="#" style="color:rgba(255,255,255,0.25);text-decoration:none;font-size:0.72rem;">Terms of Use</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  // Navbar scroll effect
+  const nav = document.getElementById('mainNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Mobile menu
+  const mobileToggle = document.getElementById('mobileMenuToggle');
+  const mobileMenu   = document.getElementById('mobileMenu');
+  mobileToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('d-none');
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Counter animation
+  function animateCounter(el, target, suffix = '') {
+    let start = 0;
+    const duration = 1800;
+    const step = timestamp => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(ease * target).toLocaleString() + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  const statsSection = document.getElementById('stats');
+  let counted = false;
+  const statsObserver = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting && !counted) {
+      counted = true;
+      const nums = document.querySelectorAll('.stat-number');
+      // 24+, 50K, 100%
+      animateCounter({ set textContent(v){ nums[0].innerHTML = v + '<span>+</span>'; }}, 24);
+      animateCounter({ set textContent(v){ nums[1].innerHTML = v + '<span>K</span>'; }}, 50);
+      animateCounter({ set textContent(v){ nums[2].innerHTML = v + '<sup>%</sup>'; }}, 100);
+    }
+  }, { threshold: 0.4 });
+  statsObserver.observe(statsSection);
+</script>
+</body>
+</html>
